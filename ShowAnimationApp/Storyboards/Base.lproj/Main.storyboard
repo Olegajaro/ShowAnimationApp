@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSc-ve-FYJ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSc-ve-FYJ" customClass="SpringView" customModule="Spring">
                                 <rect key="frame" x="40" y="84" width="334" height="200"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="a2E-Dm-XwS">
@@ -61,8 +61,13 @@
                                     <constraint firstAttribute="height" constant="200" id="OQL-D7-Nk3"/>
                                     <constraint firstItem="a2E-Dm-XwS" firstAttribute="leading" secondItem="uSc-ve-FYJ" secondAttribute="leading" constant="16" id="idh-9U-GdC"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gjb-HF-xHC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gjb-HF-xHC" customClass="SpringButton" customModule="Spring">
                                 <rect key="frame" x="101.5" y="680.5" width="211" height="38"/>
                                 <color key="backgroundColor" systemColor="systemBrownColor"/>
                                 <state key="normal" title="Button"/>
@@ -70,6 +75,14 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="runAnimationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="78q-Pj-Rk3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -83,6 +96,14 @@
                             <constraint firstItem="Gjb-HF-xHC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pkd-RY-1D6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="animationView" destination="uSc-ve-FYJ" id="gzd-MC-t9b"/>
+                        <outlet property="curveLabel" destination="eV3-jw-eKF" id="o1B-nn-Imy"/>
+                        <outlet property="delayLabel" destination="WrP-pO-avy" id="riD-Mm-Pxm"/>
+                        <outlet property="durationLabel" destination="Gcq-lB-DVO" id="TnM-Ex-4QP"/>
+                        <outlet property="forceLabel" destination="KGW-f6-yd9" id="ioe-IQ-ay2"/>
+                        <outlet property="presetLabel" destination="POa-be-Iey" id="PeL-5T-gLc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
