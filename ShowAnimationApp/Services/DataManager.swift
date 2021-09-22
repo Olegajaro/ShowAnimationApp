@@ -28,11 +28,11 @@ class DataManager {
         "easeInOut"
     ]
     
-    let forces: [Float] = [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8]
+    let forces = [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8]
     
-    let durations: [Float] = [0.95, 1.0, 1.05, 1.1, 1.15, 1.20, 1.25, 1.30]
+    let durations = [0.95, 1.0, 1.05, 1.1, 1.15, 1.20, 1.25, 1.30]
     
-    let delays: [Float] = [0.3, 0.35, 0.4, 0.45, 0.5, 0.55]
+    let delays = [0.3, 0.35, 0.4, 0.45, 0.5, 0.55]
     
     private init() {}
 }

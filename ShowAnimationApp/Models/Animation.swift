@@ -10,9 +10,9 @@ import Foundation
 struct Animation {
     let preset: String
     let curve: String
-    let force: Float
-    let duration: Float
-    let delay: Float
+    let force: Double
+    let duration: Double
+    let delay: Double
     
     static func getAnimations() -> [Animation] {
         var animations: [Animation] = []

@@ -8,7 +8,7 @@
 import Spring
 
 class MainViewController: UIViewController {
-
+    
     @IBOutlet var animationView: SpringView!
     @IBOutlet var runAnimationButton: SpringButton!
     
@@ -19,24 +19,28 @@ class MainViewController: UIViewController {
     @IBOutlet var delayLabel: UILabel!
     
     private var animations = Animation.getAnimations()
+    private var index = 0
     
     override func viewDidLoad() {
-        presetLabel.text = "Preset: \(animationView.animation)"
-        curveLabel.text = "Curve: \(animationView.curve)"
-        forceLabel.text = "Force: \(animationView.force)"
-        durationLabel.text = "Duration: \(animationView.duration)"
-        delayLabel.text = "Delay: \(animationView.delay)"
+        presetLabel.text = "Preset: \(animations[index].preset)"
+        curveLabel.text = "Curve: \(animations[index].curve)"
+        forceLabel.text = "Force: \(animations[index].force)"
+        durationLabel.text = "Duration: \(animations[index].duration)"
+        delayLabel.text = "Delay: \(animations[index].delay)"
     }
     
     @IBAction func runAnimationButtonPressed(_ sender: SpringButton) {
-        
-        animationView.animation = animations.randomElement()?.preset ?? ""
+        animationView.animation = animations[index].preset
         animationView.curve = animations.randomElement()?.curve ?? ""
         animationView.force = cgFloat(forces: animations).randomElement() ?? 0
         animationView.duration = cgFloat(durations: animations).randomElement() ?? 0
         animationView.delay = cgFloat(delays: animations).randomElement() ?? 0
         animationView.animate()
         
+        sender.animation = "morph"
+        sender.duration = 0.5
+        sender.curve = "linear"
+        sender.animate()
         
         presetLabel.text = "Preset: \(animationView.animation)"
         curveLabel.text = "Curve: \(animationView.curve)"
@@ -44,10 +48,15 @@ class MainViewController: UIViewController {
         durationLabel.text = "Duration: \(string(from: animationView.duration))"
         delayLabel.text = "Delay: \(string(from: animationView.delay))"
         
-        runAnimationButton.setTitle(
-            "Run \(animationView.animation)",
-            for: .normal
-        )
+        if index < animations.count - 1 {
+            runAnimationButton.setTitle(
+                "Run \(animations[index + 1].preset)",
+                for: .normal
+            )
+            index += 1
+        } else {
+            index = 0
+        }
     }
     
     private func cgFloat(forces array: [Animation]) -> [CGFloat] {
