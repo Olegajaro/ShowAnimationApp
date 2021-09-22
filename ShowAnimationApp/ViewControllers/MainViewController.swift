@@ -31,10 +31,10 @@ class MainViewController: UIViewController {
     
     @IBAction func runAnimationButtonPressed(_ sender: SpringButton) {
         animationView.animation = animations[index].preset
-        animationView.curve = animations.randomElement()?.curve ?? ""
-        animationView.force = cgFloat(forces: animations).randomElement() ?? 0
-        animationView.duration = cgFloat(durations: animations).randomElement() ?? 0
-        animationView.delay = cgFloat(delays: animations).randomElement() ?? 0
+        animationView.curve = animations[index].curve
+        animationView.force = cgFloat(forces: animations)[index]
+        animationView.duration = cgFloat(durations: animations)[index]
+        animationView.delay = cgFloat(delays: animations)[index]
         animationView.animate()
         
         sender.animation = "morph"
