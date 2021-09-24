@@ -5,8 +5,6 @@
 //  Created by Олег Федоров on 21.09.2021.
 //
 
-import Foundation
-
 struct Animation {
     let preset: String
     let curve: String
@@ -14,29 +12,23 @@ struct Animation {
     let duration: Double
     let delay: Double
     
-    static func getAnimations() -> [Animation] {
-        var animations: [Animation] = []
-        
-        let presets = DataManager.shared.presets.shuffled()
-        let curves = DataManager.shared.curves
-        let forces = DataManager.shared.forces
-        let durations = DataManager.shared.durations
-        let delays = DataManager.shared.delays
-        
-        var index = 0
-        
-        for _ in 1...presets.count {
-            let animation = Animation(
-                preset: presets[index],
-                curve: curves.randomElement() ?? "",
-                force: forces.randomElement() ?? 0,
-                duration: durations.randomElement() ?? 0,
-                delay: delays.randomElement() ?? 0
-            )
-            index += 1
-            animations.append(animation)
-        }
-        
-        return animations
+    var description: String {
+        """
+        Preset: \(preset)
+        Curve: \(curve)
+        Force: \(String(format: "%.02f", force))
+        Duration: \(String(format: "%.02f", duration))
+        Delay: \(String(format: "%.02f", delay))
+        """
+    }
+    
+    static func getRandomAnimation() -> Animation {
+        Animation(
+            preset: DataManager.shared.presets.randomElement()?.rawValue ?? "pop",
+            curve: DataManager.shared.curves.randomElement()?.rawValue ?? "easeIn",
+            force: Double.random(in: 1...2),
+            duration: Double.random(in: 1...2),
+            delay: Double.random(in: 0.3...0.6)
+        )
     }
 }
